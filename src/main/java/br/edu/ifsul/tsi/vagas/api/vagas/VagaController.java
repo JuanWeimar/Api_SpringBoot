@@ -5,6 +5,7 @@ package br.edu.ifsul.tsi.vagas.api.vagas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -20,6 +21,7 @@ public class VagaController {
     private VagaService service;
 
     @GetMapping
+    @Secured({"ROLE_ADMIN"})
     //@ApiOperation(value = "Retorna todos os produtos cadastrados.")
     public ResponseEntity<List<VagaDTO>> selectAll() {
         List<VagaDTO> vagas = service.getVagas();
